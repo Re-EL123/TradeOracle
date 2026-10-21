@@ -1,0 +1,15 @@
+{
+  "name": "tradeoracle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TradeOracle — AI-assisted forex analysis, backtesting, risk management and supervised trading",
+  "scripts": {
+    "dev:frontend": "python3 -m http.server 8080 --directory frontend",
+    "dev:api": "cd api && npx vercel dev",
+    "deploy:frontend": "cd frontend && npx gh-pages -d .",
+    "typecheck": "cd api && tsc --noEmit || true",
+    "test:engine": "python3 -m pytest tests -q",
+    "lint:engine": "python3 -m ruff check trading-engine backtesting tests || true"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,39 @@
+# secrets / env
+.env
+.env.*
+!.env.example
+*.pem
+credentials.json
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# node
+node_modules/
+.vercel/
+dist/
+.npm/
+
+# engine runtime
+trading-engine/runtime/
+*.log
+logs/
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# local data
+*.sqlite
+*.db
+tmp/
+.cache/

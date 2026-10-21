@@ -1,0 +1,29 @@
+[Unit]
+Description=TradeOracle trading engine (Python worker)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tradeoracle
+Group=tradeoracle
+WorkingDirectory=/opt/tradeoracle/trading-engine
+EnvironmentFile=/opt/tradeoracle/deployment/oracle/engine.env
+ExecStart=/opt/tradeoracle/venv/bin/python -m main
+Restart=on-failure
+RestartSec=5
+StartLimitBurst=5
+StartLimitIntervalSec=60
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/tradeoracle/runtime /var/log/tradeoracle
+PrivateTmp=true
+MemoryMax=1G
+CPUQuota=80%
+StandardOutput=append:/var/log/tradeoracle/engine.log
+StandardError=append:/var/log/tradeoracle/engine.log
+
+[Install]
+WantedBy=multi-user.target

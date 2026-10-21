@@ -1,0 +1,36 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "functions": {
+    "api/*.js": { "maxDuration": 15, "memory": 512 }
+  },
+  "rewrites": [
+    { "source": "/api/v1/health", "destination": "/api/health.js" },
+    { "source": "/api/v1/engine/:path*", "destination": "/api/engine.js" },
+    { "source": "/api/v1/markets/:path*", "destination": "/api/markets.js" },
+    { "source": "/api/v1/signals", "destination": "/api/signals.js" },
+    { "source": "/api/v1/signals/:id", "destination": "/api/signals.js" },
+    { "source": "/api/v1/strategies", "destination": "/api/strategies.js" },
+    { "source": "/api/v1/strategies/:id", "destination": "/api/strategies.js" },
+    { "source": "/api/v1/backtests", "destination": "/api/backtests.js" },
+    { "source": "/api/v1/backtests/:id", "destination": "/api/backtests.js" },
+    { "source": "/api/v1/positions", "destination": "/api/positions.js" },
+    { "source": "/api/v1/orders", "destination": "/api/orders.js" },
+    { "source": "/api/v1/trades", "destination": "/api/orders.js" },
+    { "source": "/api/v1/risk/summary", "destination": "/api/risk.js" },
+    { "source": "/api/v1/risk/settings", "destination": "/api/risk.js" },
+    { "source": "/api/v1/analytics/performance", "destination": "/api/analytics.js" },
+    { "source": "/api/v1/alerts", "destination": "/api/engine.js" },
+    { "source": "/api/v1/audit-logs", "destination": "/api/engine.js" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
+}
