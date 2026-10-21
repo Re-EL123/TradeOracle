@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0A1020" />
+  <meta name="description" content="TradeOracle — AI-assisted forex market analysis, strategy research, risk management, backtesting and supervised trading. Eye of Market Growth." />
+  <title>TradeOracle — Eye of Market Growth</title>
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+
+  <!-- Public config only. Never place secrets here. -->
+  <script>
+    window.__TRADEORACLE_CONFIG__ = {
+      apiBase: (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+        ? "http://localhost:3000/api/v1"
+        : "/api/v1"
+    };
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="sidebar__brand">
+        <img class="sidebar__logo" src="assets/images/logo.png" alt="TradeOracle logo" width="34" height="34" />
+        <div class="sidebar__name">TradeOracle<span>Eye of Market Growth</span></div>
+      </div>
+      <nav class="sidebar__nav" id="nav"></nav>
+      <div class="sidebar__footer">
+        <div class="chip chip--idle" style="width:100%;justify-content:center" title="Analysis & research platform">
+          <span class="chip__dot"></span> Not financial advice
+        </div>
+      </div>
+    </aside>
+
+    <header class="topbar">
+      <button class="btn btn--ghost btn--icon menu-btn" id="menu-btn" aria-label="Open navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="topbar__title">
+        <h1 id="page-title">Overview</h1>
+        <p id="heartbeat">Connecting…</p>
+      </div>
+      <div class="topbar__spacer"></div>
+      <div class="topbar__status">
+        <span class="mode-pill" id="mode-pill" data-mode="PAPER">PAPER</span>
+        <span class="chip chip--idle chip--essential" id="chip-engine"><span class="chip__dot"></span>Engine</span>
+        <span class="chip chip--idle" id="chip-data"><span class="chip__dot"></span>Market data</span>
+        <span class="chip chip--idle" id="chip-broker"><span class="chip__dot"></span>Broker</span>
+        <span class="chip chip--warn u-hide" id="chip-demo" title="API unreachable — showing labelled simulated data"><span class="chip__dot"></span>SIM DATA</span>
+      </div>
+      <div class="topbar__actions">
+        <button class="btn btn--sm" id="btn-refresh" title="Refresh dashboard data">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+        </button>
+        <button class="btn btn--sm btn--danger" id="btn-emergency" title="Emergency stop — block all new entries">E-STOP</button>
+        <button class="btn btn--sm btn--ghost btn--icon" id="btn-user" title="Account" aria-label="Account">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="main" id="main" tabindex="-1">
+      <div id="outlet"></div>
+    </main>
+  </div>
+
+  <div class="scrim" id="scrim"></div>
+
+  <noscript>
+    <div style="padding:2rem;font-family:system-ui">TradeOracle dashboard requires JavaScript.</div>
+  </noscript>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
